@@ -250,6 +250,7 @@ class DragenCoverageMetrics(BaseMultiqcModule):
         data_by_region_by_sample = defaultdict(dict)
         for f in self.find_log_files("dragen/qc_region_coverage_metrics"):
             s_name, data_by_region = parse_wgs_coverage_metrics(f, r"(.*)\.qc-coverage-region-(1|2|3)_coverage_metrics.csv")
+            s_name = self.clean_s_name(s_name, f)
             for region, data in data_by_region.items():
                 if f["s_name"] in data_by_region_by_sample:
                     log.debug("Duplicate sample name found! Overwriting: {}".format(f["s_name"]))
