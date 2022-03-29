@@ -255,7 +255,7 @@ class DragenCoverageMetrics(BaseMultiqcModule):
                 if f["s_name"] in data_by_region_by_sample:
                     log.debug("Duplicate sample name found! Overwriting: {}".format(f["s_name"]))
                 self.add_data_source(f, section="stats")
-                data_by_region_by_sample[region][f["s_name"]] = data
+                data_by_region_by_sample[region][s_name] = data
 
         if not data_by_region_by_sample:
             return set()
